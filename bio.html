@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bio — Udayaditya</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="shell">
+  <aside>
+    <a class="site-name" href="index.html">Udayaditya</a>
+    <nav>
+      <a href="essays.html">Essays</a>
+      <a href="quotes.html">Quotes</a>
+      <a href="bio.html">Bio</a>
+      <a href="cv.html">CV</a>
+    </nav>
+    <div class="sidebar-foot">© 2025</div>
+  </aside>
+
+  <div class="divider"></div>
+
+  <main>
+    <div class="page-title">Bio</div>
+    <div class="prose">
+      <p>
+        I work in product and strategy — mostly trying to figure out what to build, why it matters, and whether the people building it are pointed in the right direction.
+      </p>
+      <p>
+        I'm based in Gurugram. Before this I've worked across early-stage companies and larger organisations, usually at the intersection of product thinking and business design.
+      </p>
+      <p>
+        Outside of work I read too much, form opinions too quickly, and write here to slow that down.
+      </p>
+      <p>
+        You can reach me at <a href="mailto:hello@udayaditya.com">hello@udayaditya.com</a> or find me on <a href="https://linkedin.com/in/udayaditya" target="_blank">LinkedIn</a>.
+      </p>
+    </div>
+  </main>
+</div>
+
+<script>
+  document.querySelectorAll('nav a').forEach(a => {
+    if (a.getAttribute('href') === 'bio.html') a.classList.add('active');
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quotes — Udayaditya</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="shell">
+  <aside>
+    <a class="site-name" href="index.html">Udayaditya</a>
+    <nav>
+      <a href="essays.html">Essays</a>
+      <a href="quotes.html">Quotes</a>
+      <a href="bio.html">Bio</a>
+      <a href="cv.html">CV</a>
+    </nav>
+    <div class="sidebar-foot">© 2025</div>
+  </aside>
+
+  <div class="divider"></div>
+
+  <main>
+    <div class="page-title">Quotes</div>
+    <ul class="quote-list">
+      <li class="quote-item">
+        <div class="quote-text">"The test of a first-rate intelligence is the ability to hold two opposed ideas in mind at the same time and still retain the ability to function."</div>
+        <div class="quote-attr">F. Scott Fitzgerald</div>
+      </li>
+      <li class="quote-item">
+        <div class="quote-text">"Plans are worthless, but planning is everything."</div>
+        <div class="quote-attr">Dwight D. Eisenhower</div>
+      </li>
+      <li class="quote-item">
+        <div class="quote-text">"A man who does not think for himself does not think at all."</div>
+        <div class="quote-attr">Oscar Wilde</div>
+      </li>
+      <li class="quote-item">
+        <div class="quote-text">"The map is not the territory."</div>
+        <div class="quote-attr">Alfred Korzybski</div>
+      </li>
+      <li class="quote-item">
+        <div class="quote-text">"All models are wrong, but some are useful."</div>
+        <div class="quote-attr">George Box</div>
+      </li>
+      <li class="quote-item">
+        <div class="quote-text">"Strong opinions, weakly held."</div>
+        <div class="quote-attr">Paul Saffo</div>
+      </li>
+    </ul>
+  </main>
+</div>
+
+<script>
+  document.querySelectorAll('nav a').forEach(a => {
+    if (a.getAttribute('href') === 'quotes.html') a.classList.add('active');
+  });
+</script>
+</body>
+</html>

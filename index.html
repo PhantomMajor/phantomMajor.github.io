@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Udayaditya</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="shell">
+    <aside>
+      <a class="site-name" href="index.html">Udayaditya</a>
+      <nav>
+        <a href="essays.html">Essays</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="bio.html">Bio</a>
+        <a href="cv.html">CV</a>
+      </nav>
+      <div class="sidebar-foot">© 2025</div>
+    </aside>
+
+    <div class="divider"></div>
+
+    <main>
+      <p class="page-title" style="font-family: var(--font-serif); font-style: italic;">Hi.</p>
+      <div class="prose">
+        <p>
+          I'm Udayaditya — product and strategy, mostly. I spend a lot of time thinking about how things work, why they
+          don't, and what it would take to make them better.
+        </p>
+        <p>
+          This is where I write. Essays are my attempts to think clearly. Quotes are things that stopped me
+          mid-sentence. The rest is context.
+        </p>
+        <p>
+          If something here made you think, I'd like to know. <a href="mailto:hello@udayaditya.com">Say hello.</a>
+        </p>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const page = location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('nav a').forEach(a => {
+      if (a.getAttribute('href') === page) a.classList.add('active');
+    });
+  </script>
+</body>
+
+</html>
