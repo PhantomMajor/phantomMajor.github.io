@@ -150,11 +150,19 @@ main {
   min-width: 0;
 }
 
+/* ── Page header ── */
+.page-header {
+  margin-bottom: 48px;
+}
+
 .page-title {
-  margin-bottom: 32px;
+  font-size: 28px;
+  font-style: italic;
+  margin-bottom: 0;
   border-bottom: 1px solid var(--border);
   padding-bottom: 16px;
 }
+
 
 /* ── Essay list ── */
 .essay-list {
@@ -448,11 +456,15 @@ main {
     flex: 1;
   }
 
+  .page-header {
+    margin-bottom: 32px;
+  }
+
   .page-title {
     font-size: 24px;
-    margin-bottom: 20px;
-    border: none;
-    padding: 0;
+    margin-bottom: 0;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 12px;
   }
 
   .essay-list {
