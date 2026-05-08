@@ -7,21 +7,24 @@
 }
 
 :root {
-  --bg: #F7F5F0;
-  --text: #111;
-  --muted: #888;
-  --border: #D0CCC4;
-  --accent: #8B1A1A;
+  --bg: #fafaf8;
+  --text: #4a4a4a;
+  --muted: #999;
+  --border: #e5e3e0;
+  --accent: #5b7c4a;
   --sidebar-w: 160px;
 }
 
 body {
+  white-space-collapse: collapse;
+  text-wrap-mode: wrap;
+  text-align: start;
   background: var(--typo-bg-color, var(--bg));
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 28px;
-  line-height: 1.15;
-  font-weight: 400;
+  font-family: "Source Serif 4", Georgia, serif;
+  font-size: medium;
+  line-height: normal;
+  font-weight: normal;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -31,10 +34,9 @@ body {
 .shell {
   display: flex;
   flex: 1;
-  max-width: 850px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
   width: 100%;
-  padding: 0 24px;
+  padding: 0 32px;
   gap: 0;
 }
 
@@ -51,11 +53,14 @@ aside {
 }
 
 .site-name {
-  font-size: 15px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   text-decoration: none;
   display: block;
   margin-bottom: 32px;
   line-height: 1.3;
+  color: var(--text);
+  transition: color 0.2s;
 }
 
 .site-name:hover {
@@ -65,21 +70,25 @@ aside {
 nav {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 8px;
+  padding-left: 16px;
 }
 
 nav a {
-  font-family: 'Courier New', monospace;
-  font-size: 13px;
-  color: var(--muted);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: var(--text);
   text-decoration: none;
   padding: 4px 0;
-  transition: color 0.1s;
-  letter-spacing: 0.02em;
+  transition: color 0.2s;
+}
+
+nav a:visited {
+  color: var(--text);
 }
 
 nav a:hover {
-  color: var(--text);
+  color: var(--accent);
 }
 
 nav a.active {
@@ -119,6 +128,7 @@ main {
   flex: 1;
   padding: 48px 0;
   min-width: 0;
+  max-width: 55ch;
 }
 
 /* ── Page header ── */
@@ -127,10 +137,12 @@ main {
 }
 
 .page-title {
-  font-size: 28px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
   margin-bottom: 0;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 16px;
+  line-height: 1.2;
+  color: var(--text);
 }
 
 
@@ -143,19 +155,21 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  padding: 11px 0;
-  border-bottom: 1px solid var(--border);
-  gap: 16px;
+  padding: 16px 0;
+  gap: 24px;
+  transition: background 0.2s;
 }
 
-.essay-list li:first-child {
-  border-top: none;
+.essay-list li:hover {
+  background: rgba(91, 124, 74, 0.02);
 }
 
 .essay-list a {
   font-size: 16px;
   text-decoration: none;
-  line-height: 1.4;
+  color: var(--text);
+  line-height: 1.5;
+  transition: color 0.2s;
 }
 
 .essay-list a:hover {
@@ -163,20 +177,22 @@ main {
 }
 
 .essay-date {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
   white-space: nowrap;
-  font-family: 'Courier New', monospace;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 /* ── Prose (welcome) ── */
+.prose {
+  max-width: 55ch;
+}
+
 .prose p {
-  font-family: var(--typo-font, inherit);
-  font-size: var(--typo-font-size, 15px);
-  line-height: var(--typo-line-height, 1.8);
-  margin-bottom: 20px;
-  max-width: var(--typo-content-width, 560px);
-  color: var(--typo-text-color, var(--text));
+  font-size: 18px;
+  line-height: 1.75;
+  margin-bottom: 24px;
+  color: var(--text);
 }
 
 .prose p:last-child {
@@ -184,122 +200,201 @@ main {
 }
 
 .prose a {
-  color: var(--typo-accent-color, var(--accent));
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.prose a:hover {
+  opacity: 0.8;
 }
 
 /* ── Quotes ── */
 .quote-list {
   list-style: none;
+  max-width: 55ch;
 }
 
 .quote-item {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border);
-  max-width: 540px;
+  padding: 24px 0;
 }
 
 .quote-text {
-  font-size: 17px;
-  line-height: 1.7;
-  margin-bottom: 8px;
+  font-size: 18px;
+  line-height: 1.75;
+  margin-bottom: 12px;
+  color: var(--text);
 }
 
 .quote-attr {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
-  letter-spacing: 0.05em;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 /* ── CV ── */
 .cv-links {
   display: flex;
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 32px;
-  font-size: 13px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 .cv-links a {
   color: var(--accent);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
 
 .cv-links a:hover {
-  text-decoration: underline;
+  opacity: 0.8;
 }
 
 .cv-section {
-  margin-bottom: 36px;
+  margin-bottom: 32px;
+  max-width: 55ch;
 }
 
 .cv-section-title {
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  letter-spacing: 0.1em;
   color: var(--muted);
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  border-bottom: 1px solid var(--border);
 }
 
 .cv-row {
   display: flex;
-  gap: 20px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--border);
+  gap: 24px;
+  padding: 8px;
   align-items: baseline;
 }
 
 .cv-year {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
-  width: 60px;
+  width: 70px;
   flex-shrink: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 .cv-role {
-  font-size: 14px;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .cv-role span {
   display: block;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
-  margin-top: 2px;
+  margin-top: 4px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 /* ── Essay page ── */
 .essay-body {
-  max-width: var(--typo-content-width, 540px);
+  max-width: 55ch;
 }
 
 .essay-body h1 {
-  font-family: var(--typo-font, inherit);
-  font-size: var(--typo-font-size, 26px);
-  line-height: 1.3;
-  margin-bottom: 8px;
-  color: var(--typo-text-color, var(--text));
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.essay-body h2 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 32px;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.essay-body h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  color: var(--text);
 }
 
 .essay-body .byline {
-  font-size: 11px;
+  font-size: 13px;
   color: var(--muted);
-  margin-bottom: 36px;
-  padding-bottom: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
   border-bottom: 1px solid var(--border);
 }
 
 .essay-body p {
-  font-family: var(--typo-font, inherit);
-  font-size: var(--typo-font-size, 15px);
-  line-height: var(--typo-line-height, 1.85);
-  margin-bottom: 22px;
-  color: var(--typo-text-color, var(--text));
+  font-size: 18px;
+  line-height: 1.75;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+.essay-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.essay-body a:hover {
+  opacity: 0.8;
+}
+
+.essay-body sup {
+  font-size: 0.8em;
+  vertical-align: super;
+}
+
+.essay-body sup a {
+  text-decoration: none;
+  margin-left: 2px;
+}
+
+.footnote {
+  font-size: 14px;
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+.footnote ol {
+  margin-left: 20px;
+  color: var(--muted);
+}
+
+.footnote li {
+  margin-bottom: 8px;
+  line-height: 1.6;
 }
 
 .back-link {
   display: inline-block;
-  font-size: 12px;
+  font-size: 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   color: var(--muted);
   text-decoration: none;
   margin-bottom: 32px;
+  transition: color 0.2s;
 }
 
 .back-link:hover {
@@ -308,13 +403,9 @@ main {
 
 /* ── Mobile responsive ── */
 @media (max-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-
   body {
-    display: flex;
-    flex-direction: column;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   .shell {
@@ -327,12 +418,11 @@ main {
   aside {
     width: 100%;
     height: auto;
-    padding: 10px 12px;
+    padding: 12px 16px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    border-bottom: 1px solid var(--border);
     background: var(--bg);
     flex-direction: row;
     align-items: center;
@@ -343,7 +433,7 @@ main {
 
   .site-name {
     margin-bottom: 0;
-    font-size: 16px;
+    font-size: 14px;
     flex: 1;
     text-align: center;
   }
@@ -353,11 +443,10 @@ main {
     background: none;
     border: none;
     color: var(--text);
-    font-size: 20px;
+    font-size: 18px;
     cursor: pointer;
     padding: 6px 8px;
   }
-
 
   .sidebar-foot {
     display: none;
@@ -373,8 +462,7 @@ main {
     left: 0;
     right: 0;
     background: var(--bg);
-    border-top: 2px solid var(--border);
-    border-color: #111;
+    border-top: 1px solid var(--border);
     z-index: 100;
     max-height: 60vh;
     overflow-y: auto;
@@ -389,19 +477,16 @@ main {
     font-size: 14px;
     padding: 16px 20px;
     text-align: left;
-    border-bottom: 1px solid var(--border);
-    color: var(--muted);
+    color: var(--text);
   }
 
   nav a:hover {
-    color: var(--text);
-    background: rgba(139, 26, 26, 0.05);
+    background: rgba(91, 124, 74, 0.03);
   }
 
   nav a.active {
-    color: var(--text);
     font-weight: 500;
-    background: rgba(139, 26, 26, 0.05);
+    background: rgba(91, 124, 74, 0.05);
   }
 
   .nav-footer {
@@ -423,88 +508,100 @@ main {
   }
 
   .page-title {
-    font-size: 24px;
-    margin-bottom: 0;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 12px;
-  }
-
-  .essay-list {
-    max-width: 100%;
+    font-size: 32px;
+    font-weight: 600;
   }
 
   .essay-list li {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
     padding: 16px 0;
-    border-bottom: 1px solid var(--border);
     gap: 12px;
   }
 
   .essay-list a {
     font-size: 15px;
-    flex: 1;
   }
 
   .essay-date {
-    font-size: 11px;
-    color: var(--muted);
-    white-space: nowrap;
+    font-size: 12px;
   }
 
-  .prose p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-
-  .quote-item {
-    padding: 16px 0;
+  .prose {
     max-width: 100%;
   }
 
+  .prose p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .essay-body {
+    max-width: 100%;
+  }
+
+  .essay-body h1 {
+    font-size: 32px;
+    margin-bottom: 12px;
+  }
+
+  .essay-body h2 {
+    font-size: 24px;
+    margin-top: 24px;
+  }
+
+  .essay-body h3 {
+    font-size: 20px;
+    margin-top: 16px;
+  }
+
+  .essay-body p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .quote-list {
+    max-width: 100%;
+  }
+
+  .quote-item {
+    padding: 20px 0;
+  }
+
   .quote-text {
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   .quote-attr {
-    font-size: 10px;
+    font-size: 12px;
+  }
+
+  .cv-section {
+    max-width: 100%;
   }
 
   .cv-row {
     flex-direction: column;
-    gap: 4px;
+    gap: 8px;
     padding: 12px 0;
   }
 
   .cv-year {
     width: auto;
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .cv-role {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .cv-links {
-    font-size: 12px;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .essay-body h1 {
-    font-size: 22px;
-    margin-bottom: 12px;
-  }
-
-  .essay-body p {
-    font-size: 14px;
-    line-height: 1.7;
-    margin-bottom: 16px;
+    font-size: 13px;
+    gap: 12px;
   }
 
   .back-link {
-    font-size: 12px;
+    font-size: 13px;
   }
 }
