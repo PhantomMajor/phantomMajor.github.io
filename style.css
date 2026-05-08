@@ -39,8 +39,8 @@ body {
 .shell {
   display: flex;
   flex: 1;
-  max-width: 860px;
-  margin: 0 auto;
+  max-width: 850px;
+  /* margin: 0 auto; */
   width: 100%;
   padding: 0 24px;
   gap: 0;
@@ -114,7 +114,7 @@ nav a.active {
   display: none;
 }
 
-aside > .dark-mode-toggle {
+aside>.dark-mode-toggle {
   display: none;
 }
 
@@ -200,7 +200,7 @@ main {
   font-family: 'Courier New', monospace;
 }
 
-/* ── Prose (bio, welcome) ── */
+/* ── Prose (welcome) ── */
 .prose p {
   font-family: var(--typo-font, inherit);
   font-size: var(--typo-font-size, 15px);
@@ -391,7 +391,7 @@ main {
     padding: 6px 8px;
   }
 
-  aside > .dark-mode-toggle {
+  aside>.dark-mode-toggle {
     display: block;
     font-size: 10px;
     padding: 6px 10px;

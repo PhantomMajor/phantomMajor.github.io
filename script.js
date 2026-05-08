@@ -3,15 +3,17 @@ function buildSidebar() {
   const shell = document.querySelector('.shell');
   if (!shell) return;
 
+  const currentPage = location.pathname.split('/').pop() || 'index.html';
+  const isHomePage = currentPage === 'index.html' || currentPage === '';
+  const homeLink = isHomePage ? '' : '<a href="index.html">Home</a>';
+
   const aside = document.createElement('aside');
   aside.innerHTML = `
     <button class="hamburger-menu" aria-label="Menu">☰</button>
-    <a class="site-name" href="index.html">Udayaditya</a>
-    <button class="dark-mode-toggle" id="darkModeToggle">Dark mode</button>
     <nav>
+      ${homeLink}
       <a href="essays.html">Essays</a>
       <a href="quotes.html">Quotes</a>
-      <a href="bio.html">Bio</a>
       <a href="cv.html">CV</a>
       <a href="typography-tester.html">Typography</a>
       <div class="nav-footer" style="border-top: 1px solid var(--border); margin-top: auto; padding: 16px 20px;">
