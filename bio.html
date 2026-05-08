@@ -17,7 +17,10 @@
       <a href="bio.html">Bio</a>
       <a href="cv.html">CV</a>
     </nav>
-    <div class="sidebar-foot">© 2025</div>
+    <div class="sidebar-foot">
+      <button class="dark-mode-toggle" id="darkModeToggle">Dark mode</button>
+      <div>© 2025</div>
+    </div>
   </aside>
 
   <div class="divider"></div>
@@ -41,10 +44,6 @@
   </main>
 </div>
 
-<script>
-  document.querySelectorAll('nav a').forEach(a => {
-    if (a.getAttribute('href') === 'bio.html') a.classList.add('active');
-  });
-</script>
+<script src="script.js"></script>
 </body>
 </html>

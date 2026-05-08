@@ -19,7 +19,10 @@
         <a href="bio.html">Bio</a>
         <a href="cv.html">CV</a>
       </nav>
-      <div class="sidebar-foot">© 2025</div>
+      <div class="sidebar-foot">
+        <button class="dark-mode-toggle" id="darkModeToggle">Dark mode</button>
+        <div>© 2026</div>
+      </div>
     </aside>
 
     <div class="divider"></div>
@@ -28,26 +31,22 @@
       <p class="page-title" style="font-family: var(--font-serif); font-style: italic;">Hi.</p>
       <div class="prose">
         <p>
-          I'm Udayaditya — product and strategy, mostly. I spend a lot of time thinking about how things work, why they
-          don't, and what it would take to make them better.
+          I'm Udayaditya - product and strategy, mostly. I spend time thinking about how things work, why they don't,
+          and what it would take to make them better.
         </p>
         <p>
           This is where I write. Essays are my attempts to think clearly. Quotes are things that stopped me
-          mid-sentence. The rest is context.
+          mid-sentence. The rest is quite random.
         </p>
         <p>
-          If something here made you think, I'd like to know. <a href="mailto:hello@udayaditya.com">Say hello.</a>
+          If something here made you think, and you'd like to share, <a href="mailto:udayaditya1998@gmail.com">Say
+            hello.</a>
         </p>
       </div>
     </main>
   </div>
 
-  <script>
-    const page = location.pathname.split('/').pop() || 'index.html';
-    document.querySelectorAll('nav a').forEach(a => {
-      if (a.getAttribute('href') === page) a.classList.add('active');
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
