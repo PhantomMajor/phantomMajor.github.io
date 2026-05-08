@@ -21,7 +21,6 @@ function buildSidebar() {
       </div>
     </nav>
     <div class="sidebar-foot">
-      <button class="dark-mode-toggle" id="darkModeToggle">Dark mode</button>
       <div>© 2026</div>
     </div>
   `;
@@ -31,28 +30,6 @@ function buildSidebar() {
 
   shell.insertBefore(divider, shell.firstChild);
   shell.insertBefore(aside, shell.firstChild);
-}
-
-// Dark mode toggle
-function initDarkMode() {
-  const darkModeToggles = document.querySelectorAll('.dark-mode-toggle');
-  if (darkModeToggles.length === 0) return;
-
-  const isDarkMode = localStorage.getItem('darkMode') === 'true';
-  if (isDarkMode) {
-    document.body.classList.add('dark-mode');
-    darkModeToggles.forEach(btn => btn.textContent = 'Light mode');
-  }
-
-  darkModeToggles.forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      const isNowDark = document.body.classList.contains('dark-mode');
-      localStorage.setItem('darkMode', isNowDark);
-      const text = isNowDark ? 'Light mode' : 'Dark mode';
-      darkModeToggles.forEach(b => b.textContent = text);
-    });
-  });
 }
 
 // Active nav highlighting
@@ -79,6 +56,13 @@ function initHamburgerMenu() {
     link.addEventListener('click', () => {
       nav.classList.remove('open');
     });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+      nav.classList.remove('open');
+    }
   });
 }
 
@@ -120,7 +104,6 @@ function applyTypographySettings() {
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
   buildSidebar();
-  initDarkMode();
   initActiveNav();
   initHamburgerMenu();
   applyTypographySettings();
