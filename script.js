@@ -5,13 +5,12 @@ function buildSidebar() {
 
   const currentPage = location.pathname.split('/').pop() || 'index.html';
   const isHomePage = currentPage === 'index.html' || currentPage === '';
-  const homeLink = isHomePage ? '' : '<a href="index.html">Home</a>';
 
   const aside = document.createElement('aside');
   aside.innerHTML = `
     <button class="hamburger-menu" aria-label="Menu">☰</button>
     <nav>
-      ${homeLink}
+      ${isHomePage ? '<a></a>' : '<a href="index.html">Home</a>'}
       <a href="essays.html">Essays</a>
       <a href="quotes.html">Quotes</a>
       <a href="cv.html">CV</a>

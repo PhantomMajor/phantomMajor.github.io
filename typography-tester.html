@@ -273,9 +273,6 @@
 
     <!-- Controls -->
     <aside class="controls-panel">
-      <a href="index.html" style="font-size: 13px; color: var(--text-secondary); text-decoration: none; display: inline-flex; align-items: center; gap: 4px; margin-bottom: 1.25rem;">
-        ← Back
-      </a>
       <p class="panel-title">Controls</p>
 
       <div class="ctrl">
@@ -355,11 +352,6 @@
         </div>
       </div>
 
-      <hr class="divider-ctrl">
-
-      <button id="applyToBlogs" style="width: 100%; padding: 8px 10px; background: #1a1a1a; color: #fff; border: none; border-radius: var(--radius-md); font-size: 13px; font-weight: 500; cursor: pointer; transition: opacity 0.2s;">
-        Apply to blog
-      </button>
     </aside>
 
     <!-- Preview -->
@@ -382,6 +374,17 @@
         </div>
       </div>
       <p class="hint">Adjust controls on the left. Hover swatches to see color names.</p>
+
+      <!-- CSS Codespace -->
+      <div style="margin-top: 24px; background: var(--surface); border: 0.5px solid var(--border); border-radius: var(--radius-lg); overflow: hidden;">
+        <div class="preview-toolbar" style="justify-content: space-between;">
+          <span style="font-size: 13px; font-weight: 500; color: var(--text-primary);">CSS</span>
+          <button id="copyBtn" style="padding: 4px 12px; background: transparent; border: 0.5px solid var(--border); border-radius: var(--radius-md); font-size: 12px; font-weight: 500; cursor: pointer; color: var(--text-primary); transition: background 0.2s;">
+            Copy
+          </button>
+        </div>
+        <pre id="cssCode" style="padding: 1.5rem; margin: 0; font-family: 'Monaco', 'Courier New', monospace; font-size: 12px; line-height: 1.5; color: var(--text-primary); background: var(--bg); overflow-x: auto; white-space: pre-wrap; word-wrap: break-word;"></pre>
+      </div>
     </main>
 
   </div>
@@ -456,29 +459,67 @@
       });
     }
 
-    setupSwatches('bgSwatches', c => { currentBg = c; });
-    setupSwatches('textSwatches', c => { currentText = c; });
-    setupSwatches('accentSwatches', c => { currentAccent = c; });
+    // Generate and update CSS code
+    function generateCSS() {
+      const font = fontSelect.value;
+      const size = parseInt(fontSizeSlider.value);
+      const lh = parseFloat(lineHeightSlider.value).toFixed(2);
+      const mw = maxWidthSlider.value;
 
-    const applyToBlogBtn = document.getElementById('applyToBlogs');
-    applyToBlogBtn.addEventListener('click', () => {
-      const settings = {
-        font: fontSelect.value,
-        fontSize: parseInt(fontSizeSlider.value),
-        lineHeight: parseFloat(lineHeightSlider.value).toFixed(2),
-        contentWidth: parseInt(maxWidthSlider.value),
-        bgColor: currentBg,
-        textColor: currentText,
-        accentColor: currentAccent
-      };
-      localStorage.setItem('typographySettings', JSON.stringify(settings));
-      applyToBlogBtn.textContent = 'Applied! ✓';
-      setTimeout(() => {
-        applyToBlogBtn.textContent = 'Apply to blog';
-      }, 2000);
+      const css = `/* Typography Settings */
+:root {
+  --typo-font: ${font};
+  --typo-font-size: ${size}px;
+  --typo-line-height: ${lh};
+  --typo-content-width: ${mw}px;
+  --typo-bg-color: ${currentBg};
+  --typo-text-color: ${currentText};
+  --typo-accent-color: ${currentAccent};
+}
+
+body {
+  font-family: var(--typo-font);
+  font-size: var(--typo-font-size);
+  line-height: var(--typo-line-height);
+  background: var(--typo-bg-color);
+  color: var(--typo-text-color);
+}
+
+main, .prose, .essay-body {
+  max-width: var(--typo-content-width);
+}
+
+a {
+  color: var(--typo-accent-color);
+}`;
+
+      document.getElementById('cssCode').textContent = css;
+    }
+
+    // Copy CSS to clipboard
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const css = document.getElementById('cssCode').textContent;
+      navigator.clipboard.writeText(css).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied! ✓';
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+        }, 2000);
+      });
     });
 
+    setupSwatches('bgSwatches', c => { currentBg = c; generateCSS(); });
+    setupSwatches('textSwatches', c => { currentText = c; generateCSS(); });
+    setupSwatches('accentSwatches', c => { currentAccent = c; generateCSS(); });
+
+    // Update CSS whenever settings change
+    fontSelect.addEventListener('change', () => { applyStyles(); generateCSS(); });
+    fontSizeSlider.addEventListener('input', () => { applyStyles(); generateCSS(); });
+    lineHeightSlider.addEventListener('input', () => { applyStyles(); generateCSS(); });
+    maxWidthSlider.addEventListener('input', () => { applyStyles(); generateCSS(); });
+
     applyStyles();
+    generateCSS();
   </script>
 
 </body>
