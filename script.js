@@ -46,6 +46,8 @@ function initHamburgerMenu() {
 
   if (!hamburger || !nav) return;
 
+  nav.classList.add('open');
+
   hamburger.addEventListener('click', () => {
     nav.classList.toggle('open');
   });
